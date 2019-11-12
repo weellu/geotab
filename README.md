@@ -2,7 +2,7 @@
 Chrome extension to show Geocaching related links meaningful for Finnish geocachers
 
 
-=Copyrights of logos used=
+## Copyrights of logos used
 
 - The <a href="http://www.geocaching.com">Geocaching</a> logo is a registered trademark of Groundspeak, Inc. DBA Geocaching. Used with permission.
 - Wikipedia logo used is public domain. Original (https://en.wikipedia.org/wiki/Wikipedia_logo#/media/File:Black_W_for_promotion.png)
