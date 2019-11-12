@@ -13,4 +13,4 @@ Chrome extension to show Geocaching related links meaningful for Finnish geocach
 - Trackable - ?
 - Project-gc - In progress
 - Cachetur logo is used with kind permission of the copyright holders.
-- Geocachingtoolbox - ?
+- Geocachingtoolbox logo used with kind permission of the copyright holders.
