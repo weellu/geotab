@@ -8,9 +8,7 @@ Chrome extension to show Geocaching related links meaningful for Finnish geocach
 - Wikipedia logo used is public domain. Original (https://en.wikipedia.org/wiki/Wikipedia_logo#/media/File:Black_W_for_promotion.png)
 - Kiven Alla, Geocache.fi, Mysteerikurssi and 6123tampere logos are used under permission of copyright holders.
 - Search icon is licensed under public domain
-- Wherigo - ?
-- Waymarking - ?
-- Trackable - ?
+- Wherigo, Waymarking and trackable icons used with kind permission of Geocaching HQ
 - Project-gc - In progress
 - Cachetur logo is used with kind permission of the copyright holders.
 - Geocachingtoolbox logo used with kind permission of the copyright holders.
