@@ -348,7 +348,7 @@ input[type='text']:focus {
   padding-left: 30px;
 }
 #google {
-  background-image: url('../icons/a.png');
+  background-image: url('../icons/search.png');
   background-position: 1px 1px;
   background-repeat: no-repeat;
   padding-left: 30px;
