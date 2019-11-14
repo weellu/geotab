@@ -1,0 +1,389 @@
+@font-face {
+  font-family: myFirstFont;
+  src: url(weblysleekuil.ttf);
+}
+
+html {
+  background: #555555;
+  background-image: url('../background.png');
+}
+
+html,
+body {
+}
+div,
+h1 {
+  margin: 0;
+  padding: 0;
+  font-family: myFirstFont, serif;
+  color: white;
+}
+
+html,
+body {
+  height: 100%;
+  font-size: 100%;
+}
+
+a {
+  color: #111;
+  text-decoration: none;
+}
+h2 a:hover {
+  color: #333;
+  text-decoration: underline;
+  transition: 0.3s;
+}
+
+h1 {
+  margin: 0.5em;
+  font-weight: normal;
+  font-size: 2em;
+}
+
+table {
+  width: 100%;
+  height: 100%;
+}
+
+td {
+  vertical-align: middle;
+}
+
+.container {
+  margin: 0 auto;
+  width: 956px;
+  text-align: center;
+  background-color: rgba(220, 220, 220, 0.4);
+}
+
+@media (max-width: 900px) {
+  .container {
+    width: 604px;
+  }
+}
+
+@media (max-width: 550px) {
+  .container {
+    width: 252px;
+  }
+}
+
+.innerContainer {
+  position: absolute;
+}
+
+.tilegroup {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.textContainer {
+  background-color: rgba(220, 220, 220, 0.4);
+  color: #333;
+  float: left;
+  width: 895px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+
+.textContainer a {
+  color: #333;
+  margin: 0px 10px;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.textContainer a:hover {
+  color: #777;
+}
+
+.textContainer a img {
+  vertical-align: middle;
+  display: inline-block;
+  padding-right: 3px;
+  margin-top: -4px;
+}
+
+#footer a img {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+#footer a:hover img {
+  -webkit-filter: grayscale(0%);
+  filter: grayscale(0%);
+}
+
+#linkConfig {
+  display: none;
+  text-align: left;
+  padding-left: 20px;
+}
+
+#linkConfig .icon-remove {
+  color: #700;
+}
+
+#linkConfig .icon-remove:hover {
+  color: #a00;
+}
+
+#settingsContainer {
+  float: left;
+  text-align: right;
+  color: #333;
+  margin-left: 5px;
+  width: 895px;
+  line-height: 2em;
+}
+
+#settingsContainer a {
+  color: #777;
+}
+
+#settingsContainer a:hover {
+  color: #333;
+}
+
+#settingsContainer .icon-gear {
+  color: #777;
+  display: inline-block;
+  padding: 0px 15px;
+  font-size: 16px;
+  line-height: 2em;
+}
+
+#settingsContainer .icon-gear:hover {
+  color: #333;
+}
+
+#settingsContainer .settings {
+  display: none;
+  font-size: 16px;
+  line-height: 2em;
+  color: #333;
+}
+
+.settingsShow {
+  background: white;
+  /*border: 1px solid #777;*/
+
+  -webkit-box-shadow: inset 0px 0px 0px 1px #aaa;
+  -moz-box-shadow: inset 0px 0px 0px 1px #aaa;
+  box-shadow: inset 0px 0px 0px 1px #aaa;
+}
+
+#toggleSettings {
+  cursor: pointer;
+}
+
+#numOfTopSitesToShow {
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.tile {
+  float: left;
+  margin: 5px;
+  width: 290px;
+  height: 150px;
+  text-align: left;
+  border: 1px solid;
+}
+
+.shorttile {
+  float: left;
+  margin: 5px;
+  width: 290px;
+  height: 69px;
+  text-align: left;
+  border: 1px solid;
+}
+
+.tall {
+  height: 229px;
+}
+
+.small {
+  width: 114px; /* 115 - 1px to account for border */
+  height: 69px;
+  line-height: 70px;
+  text-align: center;
+  padding: 0;
+  font-size: 2em;
+}
+
+.half {
+  height: 69px;
+  line-height: 35px; /* 70px / 2 = half - to make text vertically center */
+}
+
+.quarter {
+  width: 135px;
+  height: 69px;
+  line-height: 35px; /* 70px / 2 = half - to make text vertically center */
+}
+
+.tile .iconImage {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.generic,
+.blogi {
+  background-color: #eee;
+  color: #111;
+  border-color: #615b5d;
+}
+
+.search {
+  background-color: #eee;
+  color: #111;
+  border-color: #615b5d;
+}
+
+.geocache_search {
+  background-color: #15580c;
+  border-color: #615b5d;
+}
+
+.geocache_search a {
+  color: #fff;
+}
+
+.geocache_search a:hover {
+  color: #cccccc;
+  text-decoration: underline;
+}
+
+.geocachefi {
+  color: #111;
+  font-weight: bolder;
+  background-color: #ffee05;
+  border-color: #db7921;
+  border-color: #130f0c;
+}
+
+.geocachefi a {
+  color: #111;
+}
+
+.geocachefi a:hover {
+  color: #444;
+  text-decoration: underline;
+}
+
+.projectgc,
+.cachetur {
+  float: left;
+  margin: 5px;
+  text-align: left;
+  border: 1px solid #888888;
+  width: 69px;
+  height: 69px;
+  line-height: 35px; /* 70px / 2 = half - to make text vertically center */
+}
+
+.gctoolbox {
+  float: left;
+  margin: 5px;
+  text-align: left;
+  width: 71px;
+  height: 71px;
+  line-height: 35px; /* 70px / 2 = half - to make text vertically center */
+}
+
+.waymarking,
+.wherigo,
+.kivenalla,
+.mysteerikurssi {
+  background-color: #ffffff;
+  border-color: #888888;
+}
+.mysteerikurssi {
+  width: 150px;
+}
+.waymarking a:hover,
+.wherigo a:hover,
+.kivenalla a:hover,
+.mysteerikurssi a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.link {
+  color: #000000;
+}
+
+form {
+  display: block;
+  padding: 0 1em;
+  margin-top: 0.43em;
+}
+
+input[type='text'] {
+  border: 3px none;
+  font-size: 1em;
+  width: 100%;
+  padding: 2%;
+  box-sizing: border-box;
+  border: 3px solid #fff;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+input[type='text']:focus {
+  border: 3px solid #666;
+}
+
+#wikipedia {
+  background-image: url('../icons/wikipedia.png');
+  background-repeat: no-repeat;
+  padding-left: 30px;
+}
+#google {
+  background-image: url('../icons/a.png');
+  background-position: 1px 1px;
+  background-repeat: no-repeat;
+  padding-left: 30px;
+}
+
+#geocachefi {
+  background-image: url('../icons/geocachefi.png');
+  background-repeat: no-repeat;
+  background-position: -1px -1px;
+  padding-left: 33px;
+}
+
+#geocaching {
+  background-image: url('../icons/geocaching.jpg');
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+  padding-left: 33px;
+}
+
+#trackable {
+  background-image: url('../icons/trackable.png');
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+  padding-left: 33px;
+}
+
+#logcache {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 4px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0px 0px;
+  cursor: pointer;
+}

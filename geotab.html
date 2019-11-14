@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="geotab.js"></script>
+    <link rel="stylesheet" href="css/geotab.css" />
+    <link rel="stylesheet" href="css/fontawesome.min.css" />
+
+    <title>New tab</title>
+  </head>
+
+  <body>
+    <table>
+      <tr>
+        <td>
+          <div class="container">
+            <div class="tile tall geocache_search">
+              <form
+                action="https://www.geocaching.com/seek/cache_details.aspx"
+                method="get"
+              >
+                <a href="https://www.geocaching.com">Geocaching.com</a> haku:<br />
+                <input
+                  id="geocaching"
+                  type="text"
+                  name="wp"
+                  value="GC"
+                  size="10"
+                  maxlength="7"
+                  tabindex="11"
+                  id="wp"
+                  style="width:60%"
+                />
+                <input id="logcache" value="Kirjaa löytö" type="button" />
+              </form>
+              <form action="https://www.geocaching.com/profile/" method="get">
+                Geokätköilijä<br />
+                <input type="text" name="u" id="u" size="18" />
+              </form>
+              <form
+                action="https://www.geocaching.com/track/details.aspx"
+                method="get"
+              >
+                Matkaaja <br/>
+                <input id="trackable" type="text" maxlength="6" size="6" name="tracker" id="tb" value="" style="width:60%" />
+              </form>
+            </div>
+
+            <div class="tile blogi">
+              <h2>
+                <img
+                  src="icons/6123tampere.png"
+                  alt="6123tampere.com"
+                  style="vertical-align:bottom;margin-left:10px;"
+                />
+
+                <a href="https://www.6123tampere.com">61&deg;23&deg; Tampere</a>
+              </h2>
+              <form action="https://www.6123tampere.com/" method="get">
+                Etsi blogista<br /><input type="text" name="s" />
+              </form>
+            </div>
+
+            <div class="tile search">
+              <h2 style="margin:15px;">
+                Haku
+              </h2>
+              <form action="http://www.google.com/search" method="get">
+                 <input id="google" type="text" name="q" placeholder="Google haku"/>
+              </form>
+              <form action="https://fi.wikipedia.org/w/index.php" method="get">
+                <input id="wikipedia" type="text" name="search" placeholder="Wikipedia haku"/>
+              </form>
+            </div>
+
+            <div class="shorttile geocachefi">
+              <form
+                action="https://www.geocache.fi/caches/cachetieto.php"
+                method="get"
+              >
+                <a href="http://www.geocache.fi">Geocache.fi</a> haku<br />
+                <input
+                  id="geocachefi"
+                  type="text"
+                  name="wp"
+                  tabindex="11"
+                  id="wp"
+                  style="width:100%"
+                />
+              </form>
+            </div>
+            <div class="projectgc">
+              <a href="https://project-gc.com/">
+                <img
+                  src="icons/projectgc.png"
+                  alt="Project-gc.com"
+                  style="vertical-align:bottom;"
+                  width="69"
+              /></a>
+            </div>
+            <div class="cachetur">
+              <a href="https://cachetur.no/">
+                <img
+                  src="icons/cachetur.jpg"
+                  alt="Cachetur.no"
+                  style="vertical-align:bottom;"
+                  width="69"
+              /></a>
+            </div>
+             <div class="gctoolbox">
+              <a href="https://www.geocachingtoolbox.com">
+                <img
+                  src="icons/geocachingtoolbox.png"
+                  alt="Geocaching Toolbox"
+                  style="vertical-align:bottom;"
+                  width="69"
+              /></a>
+            </div>
+            <div class="tile quarter wherigo">
+              <h3>
+                <img
+                  src="icons/wherigo.jpg"
+                  alt="wherigo.com"
+                  style="vertical-align:bottom;margin-left:10px;"
+                /><a class="link" href="https://www.wherigo.com/">Wherigo</a>
+              </h3>
+            </div>
+            <div class="tile quarter waymarking">
+              <h3>
+                <img
+                  src="icons/waymarking.jpg"
+                  alt="waymarking.com"
+                  style="vertical-align:bottom;margin-left:2px;"
+                /><a
+                  class="link"
+                  style="margin-left:2px;"
+                  href="https://waymarking.com/"
+                  >Waymarking</a
+                >
+              </h3>
+            </div>
+            <div class="tile quarter kivenalla">
+              <h3>
+                <img
+                  src="icons/kivenalla.png"
+                  alt="Kiven Alla kauppa"
+                  style="vertical-align:bottom;margin-left:10px;"
+                />
+                <a class="link" href="https://kivenalla.fi">Kiven alla</a>
+              </h3>
+            </div>
+            <div class="tile quarter mysteerikurssi">
+                <h3>
+                  <img
+                    src="icons/mysteerikurssi.png"
+                    alt="Mysteerikurssi"
+                    style="vertical-align:bottom;margin-left:5px;"
+                  />
+                  <a class="link" href="https://www.mysteerikurssi.fi">Mysteerikurssi</a>
+                </h3>
+              </div>
+            <div id="footer" class="textContainer">
+              <!-- Most visited sites will be here-->
+            </div>
+            <div id="settingsContainer" title="The most visited sites (top sites) list is generated by Google Chrome.&#10;&#10;Custom links can also be added to the 'Newtab links' folder in the Bookmarks Manager (Ctrl + Shift + O).">
+              <div id="settings" class="settings">
+                  Show
+                  <select id="numOfTopSitesToShow">
+                    <option value="0">0</option>
+                    <option value="3">3</option>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                  </select> most visited links.
+                </span>
+              </div>
+              <a id="toggleSettings" class="icon-gear" title="Configuration">&#9881;</a>
+            </div>
+          </div>
+          <!-- Container -->
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
