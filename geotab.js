@@ -86,7 +86,7 @@ function trimString(str, maxLength) {
 
 function createElLink(id, url, text, title) {
   var img = document.createElement('img');
-  img.src = 'chrome://favicon/' + url;
+  img.src = 'http://www.google.com/s2/favicons?domain=' + url;
 
   var text = document.createTextNode(trimString(text, 20));
 

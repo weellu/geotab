@@ -81,7 +81,7 @@ function trimString(str, maxLength) {
 
 function createElLink(id, url, text, title) {
   var img = document.createElement('img');
-  img.src = 'chrome://favicon/' + url;
+  img.src = 'http://www.google.com/s2/favicons?domain=' + url;
 
   var text = document.createTextNode(trimString(text, 20));
 
@@ -107,9 +107,6 @@ function grow(el) {
 }
 
 function renderTopSites(topSites) {
-  //document.getElementsByClassName("footer")[0].innerHTML += data.length;
-  //console.log(topSites);
-  console.log(Config.numOfTopSites);
 
   for (var i = 0; i < Config.numOfTopSites && i < topSites.length; i++) {
     var topSite = topSites[i];
@@ -119,8 +116,6 @@ function renderTopSites(topSites) {
 
 function renderLinksFromBookmarks() {
   var bookmarkFolder = ObjectStore.get('bookmarkFolder');
-
-  console.log(bookmarkFolder);
 
   if (bookmarkFolder != null) {
     chrome.bookmarks.getChildren(bookmarkFolder.id, function(bookmarks) {
@@ -247,7 +242,7 @@ window.onload = function() {
   // something is not ready and topsites are not rendered
   setTimeout(renderFooterLinks, 10);
 
-  $('toggleSettings').addEventListener('click', function() {
+  document.getElementById('toggleSettings').addEventListener('click', function() {
     toggleSettings();
   });
 
@@ -258,5 +253,4 @@ window.onload = function() {
   document.getElementById('numOfTopSitesToShow').value = Config.numOfTopSites;
 
   verifyThatBookmarksFolderExists();
-  // insertHelpElement();
 };
