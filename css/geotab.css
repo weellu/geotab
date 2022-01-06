@@ -148,7 +148,7 @@ td {
 }
 
 #settingsContainer .icon-gear {
-  color: #777;
+  color: rgb(180, 3, 3);
   display: inline-block;
   padding: 0px 15px;
   font-size: 16px;
