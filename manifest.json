@@ -1,7 +1,7 @@
 {
   "name": "Geocaching new tab page (Finnish)",
-  "version": "0.1.4",
-  "manifest_version": 2,
+  "version": "0.1.5",
+  "manifest_version": 3,
   "description": "Chrome-laajennos suomalaisille kätköilijöille. Linkkaa Chromen tyhjälle tabille olennaiset kätköilysivustot ja hakukentät.",
   "homepage_url": "https://www.6123tampere.com",
   "icons": {
@@ -9,12 +9,24 @@
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
-  "background": {
-    "scripts": ["background.js"],
-    "persistent": false
-  },
+  "content_scripts":[
+    {
+        "matches": [
+            "<all_urls>"
+        ],
+        "js": ["background.js"]
+    }
+  ],
   "chrome_url_overrides": {
     "newtab": "geotab.html"
   },
-  "permissions": ["topSites", "tabs", "bookmarks", "chrome://favicon/"]
+  "permissions": [
+    "topSites",
+    "tabs",
+    "bookmarks"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';"
+  }
 }
