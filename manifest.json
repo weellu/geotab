@@ -1,6 +1,6 @@
 {
   "name": "Geocaching new tab page (Finnish)",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "manifest_version": 3,
   "description": "Chrome-laajennos suomalaisille kätköilijöille. Linkkaa Chromen tyhjälle tabille olennaiset kätköilysivustot ja hakukentät.",
   "homepage_url": "https://www.6123tampere.com",
@@ -22,7 +22,6 @@
   },
   "permissions": [
     "topSites",
-    "tabs",
     "bookmarks"
   ],
   "content_security_policy": {
