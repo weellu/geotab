@@ -278,6 +278,16 @@ td {
   text-decoration: underline;
 }
 
+.wiktionary {
+  color: #111;
+  font-weight: bolder;
+  background-color: #ccc;
+  border-color: #130f0c;
+
+  align-items: center; /* Vertically align the items */
+  gap: 5px; /* Add spacing between elements */
+}
+
 .projectgc,
 .jigidi,
 .cachetur {
@@ -361,6 +371,24 @@ input[type='text']:focus {
   background-repeat: no-repeat;
   background-position: -1px -1px;
   padding-left: 33px;
+}
+
+#wiktionaryinput {
+  background-image: url('../icons/wiktionary.png');
+  background-repeat: no-repeat;
+  background-position: -1px -1px;
+  padding-left: 30px;
+}
+
+#wiktionarybtn {
+  border: none;
+  padding: 4px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0px 0px;
+  cursor: pointer;
 }
 
 #geocaching {

@@ -233,12 +233,21 @@ window.onload = function() {
   verifyThatBookmarksFolderExists();
 
   document.getElementById('logcache').addEventListener('click', logGeocache);
+  document.getElementById('wiktionarybtn').addEventListener('click', openWiktionary);
 };
 
 function logGeocache() {
   window.open(
     'https://www.geocaching.com/seek/log.aspx?wp=' +
       document.getElementById('geocaching').value,
+    '_blank'
+  );
+  }
+
+function openWiktionary() {
+  window.open(
+    'https://fi.wiktionary.org/wiki/' +
+      document.getElementById('wiktioword').value,
     '_blank'
   );
 }
