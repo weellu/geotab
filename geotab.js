@@ -253,6 +253,6 @@ function openWiktionary() {
   window.open(
     'https://fi.wiktionary.org/wiki/' +
       document.getElementById('wiktionaryinput').value,
-    '_blank'
+    '_self'
   );
 }
