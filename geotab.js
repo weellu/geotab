@@ -233,7 +233,12 @@ window.onload = function() {
   verifyThatBookmarksFolderExists();
 
   document.getElementById('logcache').addEventListener('click', logGeocache);
-  document.getElementById('wiktionarybtn').addEventListener('click', openWiktionary);
+  
+  document.getElementById('wiktionaryinput').addEventListener('keydown', (event) => {
+    if (event.key == 'Enter') {
+      openWiktionary();
+    }
+  });
 };
 
 function logGeocache() {
@@ -247,7 +252,7 @@ function logGeocache() {
 function openWiktionary() {
   window.open(
     'https://fi.wiktionary.org/wiki/' +
-      document.getElementById('wiktioword').value,
+      document.getElementById('wiktionaryinput').value,
     '_blank'
   );
 }
