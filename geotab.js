@@ -1,12 +1,7 @@
 function ConfigStore() {
   this.__defineGetter__('numOfTopSites', function() {
     var storedValue = localStorage.getItem('numOfTopSites');
-
-    if (storedValue == null) {
-      return 10;
-    } else {
-      return storedValue;
-    }
+    return storedValue == null ? 10 : storedValue;
   });
 
   this.__defineSetter__('numOfTopSites', function(val) {
@@ -26,7 +21,7 @@ var ObjectStore = {
   },
 
   clear: function(key) {
-    localStorage.clear(key);
+    localStorage.removeItem(key);
   }
 };
 
@@ -49,13 +44,13 @@ var LinkStore = {
 
   remove: function(id) {
     var links = this.getAll();
-
     for (var i = 0; i < links.length; i++) {
       if (links[i].id == id) {
         links.splice(i, 1);
         break;
       }
     }
+    ObjectStore.set(this.storageKey, links);
   },
 
   getAll: function() {
@@ -77,18 +72,14 @@ function $(id) {
 }
 
 function trimString(str, maxLength) {
-  if (str.length <= maxLength) {
-    return str;
-  } else {
-    return str.substring(0, maxLength - 2) + '..';
-  }
+  return str.length <= maxLength ? str : str.substring(0, maxLength - 2) + '..';
 }
 
 function createElLink(id, url, text, title) {
   var img = document.createElement('img');
   img.src = 'http://www.google.com/s2/favicons?domain=' + url;
 
-  var text = document.createTextNode(trimString(text, 20));
+  var textNode = document.createTextNode(trimString(text, 20));
 
   var a = document.createElement('a');
   a.id = id;
@@ -96,15 +87,13 @@ function createElLink(id, url, text, title) {
   a.title = title;
 
   a.appendChild(img);
-  a.appendChild(text);
+  a.appendChild(textNode);
 
   return a;
 }
 
 function addLinkToFooter(id, url, text, title) {
-  document
-    .getElementById('footer')
-    .appendChild(createElLink(id, url, text, title));
+  document.getElementById('footer').appendChild(createElLink(id, url, text, title));
 }
 
 function grow(el) {
@@ -119,21 +108,29 @@ function renderTopSites(topSites) {
 }
 
 function renderLinksFromBookmarks() {
-  var bookmarkFolder = ObjectStore.get('bookmarkFolder');
+  const bookmarkFolderId = ObjectStore.get('bookmarkFolderId');
 
-  if (bookmarkFolder != null) {
-    chrome.bookmarks.getChildren(bookmarkFolder.id, function(bookmarks) {
-      for (var i = 0; i < bookmarks.length; i++) {
-        var bookmark = bookmarks[i];
-
-        addLinkToFooter(
-          bookmark.id,
-          bookmark.url,
-          bookmark.title,
-          bookmark.title
-        );
+  if (bookmarkFolderId) {
+    chrome.bookmarks.getChildren(bookmarkFolderId, function(bookmarks) {
+      if (!bookmarks || chrome.runtime.lastError) {
+        ObjectStore.clear('bookmarkFolderId');
+        verifyThatBookmarksFolderExists(renderLinksFromBookmarks);
+      } else {
+        for (var i = 0; i < bookmarks.length; i++) {
+          var bookmark = bookmarks[i];
+          if (bookmark.url) {
+            addLinkToFooter(
+              bookmark.id,
+              bookmark.url,
+              bookmark.title,
+              bookmark.title
+            );
+          }
+        }
       }
     });
+  } else {
+    verifyThatBookmarksFolderExists(renderLinksFromBookmarks);
   }
 }
 
@@ -155,7 +152,6 @@ function renderFooterLinks() {
 function addLink() {
   var url = $('newLinkUrl').value;
   var text = $('newLinkText').value;
-
   LinkStore.add(url, text, text);
 }
 
@@ -164,7 +160,6 @@ function showLinkConfig() {
   document.getElementById('linkConfig').style.display = 'block';
 
   var links = LinkStore.getAll();
-
   for (var i = 0; i < links.length; i++) {
     addLinkToConfig(links[i].id, links[i].url, links[i].text, links[i].text);
   }
@@ -172,7 +167,6 @@ function showLinkConfig() {
 
 function toggleSettings() {
   var current = document.getElementById('settings').style.display;
-
   if (current == '' || current == 'none') {
     document.getElementById('settings').style.display = 'inline-block';
     document.getElementById('settingsContainer').className = 'settingsShow';
@@ -182,38 +176,31 @@ function toggleSettings() {
   }
 }
 
-function verifyThatBookmarksFolderExists() {
-  var bookmarkFolder = ObjectStore.get('bookmarkFolder');
+function verifyThatBookmarksFolderExists(callback) {
+  const folderTitle = "Geotab links (Links show in 'Geocaching New Tab-page')";
 
-  if (bookmarkFolder == null) {
-    createBookmarkFolder();
-  } else {
-    chrome.bookmarks.getChildren(bookmarkFolder.id, function(bookmarks) {
-      if (bookmarks == undefined) {
-        ObjectStore.clear('bookmarkFolder');
-        createBookmarkFolder();
+  chrome.bookmarks.search({ title: folderTitle }, function(results) {
+    if (results && results.length > 0) {
+      for (let i = 0; i < results.length; i++) {
+        if (!results[i].url) {
+          ObjectStore.set('bookmarkFolderId', results[i].id);
+          if (callback) callback(results[i].id);
+          return;
+        }
       }
-    });
-  }
-}
-
-function createBookmarkFolder() {
-  chrome.bookmarks.create(
-    {
-      title: "Geotab links (Links show in 'Geocaching New Tab-page')"
-    },
-    function(obj) {
-      ObjectStore.set('bookmarkFolder', obj);
     }
-  );
+
+    // Not found — create new
+    chrome.bookmarks.create({ title: folderTitle }, function(newFolder) {
+      ObjectStore.set('bookmarkFolderId', newFolder.id);
+      if (callback) callback(newFolder.id);
+    });
+  });
 }
 
 function saveSettings() {
-  var numOfTopSitesToShow = document.getElementById('numOfTopSitesToShow')
-    .value;
-
+  var numOfTopSitesToShow = document.getElementById('numOfTopSitesToShow').value;
   Config.numOfTopSites = numOfTopSitesToShow;
-
   renderFooterLinks();
 }
 
@@ -233,7 +220,7 @@ window.onload = function() {
   verifyThatBookmarksFolderExists();
 
   document.getElementById('logcache').addEventListener('click', logGeocache);
-  
+
   document.getElementById('wiktionaryinput').addEventListener('keydown', (event) => {
     if (event.key == 'Enter') {
       openWiktionary();
@@ -247,7 +234,7 @@ function logGeocache() {
       document.getElementById('geocaching').value,
     '_blank'
   );
-  }
+}
 
 function openWiktionary() {
   window.open(
