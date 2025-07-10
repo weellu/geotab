@@ -242,9 +242,10 @@ window.onload = function() {
   // something is not ready and topsites are not rendered
   setTimeout(renderFooterLinks, 10);
 
-  document.getElementById('toggleSettings').addEventListener('click', function() {
-    toggleSettings();
-  });
+  const toggleSettingsBtn = document.getElementById('toggleSettings');
+  if (toggleSettingsBtn) {
+    toggleSettingsBtn.addEventListener('click', toggleSettings);
+  }
 
   $('numOfTopSitesToShow').addEventListener('change', function() {
     saveSettings();
