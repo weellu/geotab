@@ -210,8 +210,7 @@ window.onload = function() {
   const toggleSettingsBtn = document.getElementById('toggleSettings');
   if (toggleSettingsBtn) {
       toggleSettingsBtn.addEventListener('click', toggleSettings);
-    }
-  };
+  }
 
   $('numOfTopSitesToShow').addEventListener('change', function() {
     saveSettings();
